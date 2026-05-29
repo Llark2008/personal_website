@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Rongxuan Deng personal homepage focused on Reinforcement Learning."
+    >
+    <title>Rongxuan Deng</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --background: #f7f8fb;
+        --surface: #ffffff;
+        --text: #171923;
+        --muted: #606a78;
+        --line: #dce3eb;
+        --accent: #146c68;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 32px 20px;
+        background: var(--background);
+        color: var(--text);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+      }
+
+      main {
+        width: min(100%, 520px);
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 44px;
+        background: var(--surface);
+        box-shadow: 0 24px 80px rgba(23, 25, 35, 0.08);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 4rem;
+        line-height: 0.95;
+        font-weight: 720;
+        letter-spacing: 0;
+      }
+
+      .contact {
+        margin: 22px 0 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .focus {
+        display: inline-flex;
+        align-items: center;
+        min-height: 36px;
+        margin-top: 30px;
+        border-top: 1px solid var(--line);
+        padding-top: 22px;
+        color: var(--accent);
+        font-size: 0.95rem;
+        font-weight: 650;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 560px) {
+        body {
+          padding: 24px 16px;
+        }
+
+        .card {
+          padding: 32px 26px;
+        }
+
+        h1 {
+          font-size: 2.75rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main aria-label="Personal homepage">
+      <section class="card">
+        <h1>Rongxuan Deng</h1>
+        <p class="contact">fdeng.andrew.cmu</p>
+        <div class="focus">Reinforcement Learning</div>
+      </section>
+    </main>
+  </body>
+</html>
