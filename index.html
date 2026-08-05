@@ -5,30 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="Rongxuan Deng personal homepage focused on Reinforcement Learning."
+      content="Rongxuan Deng is a Carnegie Mellon mathematics student interested in reinforcement learning, decision making, and embodied intelligence."
     >
-    <title>Rongxuan Deng</title>
+    <title>Rongxuan Deng — Reinforcement Learning</title>
     <style>
       :root {
         color-scheme: light;
-        --background: #f7f8fb;
-        --surface: #ffffff;
-        --text: #171923;
-        --muted: #606a78;
-        --line: #dce3eb;
-        --accent: #146c68;
+        --background: #fafbf9;
+        --surface: #f0f4f1;
+        --text: #18211e;
+        --muted: #68716d;
+        --line: #d7ddd9;
+        --accent: #1d6658;
+        --accent-soft: #e7f0ec;
+        --content-width: 940px;
       }
 
       * {
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         min-height: 100vh;
         margin: 0;
-        display: grid;
-        place-items: center;
-        padding: 32px 20px;
         background: var(--background);
         color: var(--text);
         font-family:
@@ -36,69 +39,435 @@
           "Segoe UI", sans-serif;
       }
 
-      main {
-        width: min(100%, 520px);
+      a {
+        color: inherit;
+        text-decoration-color: color-mix(in srgb, var(--accent) 55%, transparent);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 4px;
       }
 
-      .card {
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        padding: 44px;
-        background: var(--surface);
-        box-shadow: 0 24px 80px rgba(23, 25, 35, 0.08);
-      }
-
-      h1 {
-        margin: 0;
-        font-size: 4rem;
-        line-height: 0.95;
-        font-weight: 720;
-        letter-spacing: 0;
-      }
-
-      .contact {
-        margin: 22px 0 0;
-        color: var(--muted);
-        font-size: 1rem;
-        line-height: 1.6;
-      }
-
-      .focus {
-        display: inline-flex;
-        align-items: center;
-        min-height: 36px;
-        margin-top: 30px;
-        border-top: 1px solid var(--line);
-        padding-top: 22px;
+      a:hover {
         color: var(--accent);
-        font-size: 0.95rem;
-        font-weight: 650;
-        letter-spacing: 0;
+        text-decoration-color: currentColor;
+      }
+
+      a:focus-visible {
+        border-radius: 2px;
+        outline: 3px solid color-mix(in srgb, var(--accent) 32%, transparent);
+        outline-offset: 4px;
+      }
+
+      .shell {
+        width: min(calc(100% - 48px), var(--content-width));
+        margin-inline: auto;
+      }
+
+      .site-header {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .site-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 76px;
+        gap: 24px;
+      }
+
+      .site-name {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.12rem;
+      }
+
+      .nav-links,
+      .footer-links,
+      .metadata {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 18px;
+      }
+
+      .nav-links {
+        color: var(--muted);
+        font-size: 0.84rem;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.6fr) minmax(210px, 0.65fr);
+        gap: 64px;
+        padding-block: 88px 72px;
+      }
+
+      .eyebrow,
+      .section-label,
+      .work-kind {
+        margin: 0;
+        color: var(--accent);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.13em;
         text-transform: uppercase;
       }
 
-      @media (max-width: 560px) {
-        body {
-          padding: 24px 16px;
+      h1,
+      h2,
+      h3,
+      .statement {
+        font-family: Georgia, "Times New Roman", serif;
+        font-weight: 500;
+      }
+
+      h1 {
+        margin: 15px 0 5px;
+        font-size: clamp(3rem, 8vw, 5.5rem);
+        line-height: 0.95;
+        letter-spacing: -0.045em;
+      }
+
+      .statement {
+        margin: 18px 0 20px;
+        font-size: clamp(1.65rem, 3.2vw, 2.35rem);
+        line-height: 1.12;
+        letter-spacing: -0.025em;
+      }
+
+      .intro,
+      .work-summary,
+      .about-copy {
+        color: var(--muted);
+        line-height: 1.72;
+      }
+
+      .intro {
+        max-width: 41rem;
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      .current {
+        align-self: end;
+        border-left: 1px solid var(--line);
+        padding: 6px 0 6px 24px;
+        color: var(--muted);
+        font-size: 0.86rem;
+        line-height: 1.8;
+      }
+
+      .current strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--text);
+      }
+
+      .section-heading {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 24px;
+        border-top: 1px solid var(--line);
+        padding-block: 30px 19px;
+      }
+
+      .section-note {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+
+      .work-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+        padding-bottom: 78px;
+      }
+
+      .work-item {
+        min-width: 0;
+        border-top: 2px solid var(--text);
+        padding-top: 18px;
+      }
+
+      .work-visual,
+      .work-image {
+        width: 100%;
+        height: 220px;
+        margin-bottom: 22px;
+      }
+
+      .work-visual {
+        display: grid;
+        place-items: center;
+        padding: 28px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+      }
+
+      .work-visual p {
+        max-width: 17em;
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.45rem;
+        line-height: 1.25;
+        text-align: center;
+      }
+
+      .work-image {
+        display: block;
+        background: var(--surface);
+        object-fit: cover;
+        filter: saturate(0.72) contrast(0.96);
+      }
+
+      .work-item h3 {
+        margin: 10px 0 12px;
+        font-size: clamp(1.55rem, 2.8vw, 2.15rem);
+        line-height: 1.18;
+        letter-spacing: -0.025em;
+      }
+
+      .work-summary {
+        margin: 0;
+        font-size: 0.93rem;
+      }
+
+      .metadata {
+        margin-top: 18px;
+        gap: 8px;
+      }
+
+      .metadata span,
+      .metadata a {
+        background: var(--accent-soft);
+        color: var(--accent);
+        padding: 6px 9px;
+        font-size: 0.76rem;
+        font-weight: 650;
+      }
+
+      .about {
+        display: grid;
+        grid-template-columns: 1.35fr 0.65fr;
+        gap: 72px;
+        border-top: 1px solid var(--line);
+        padding-block: 46px 64px;
+      }
+
+      .about-title {
+        margin: 10px 0 14px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.8rem;
+        font-weight: 500;
+      }
+
+      .about-copy,
+      .interest-list {
+        margin: 0;
+        font-size: 0.93rem;
+      }
+
+      .interest-list {
+        padding: 10px 0 0;
+        color: var(--muted);
+        line-height: 1.9;
+        list-style: none;
+      }
+
+      .site-footer {
+        border-top: 1px solid var(--line);
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        min-height: 92px;
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .shell {
+          width: min(calc(100% - 32px), var(--content-width));
         }
 
-        .card {
-          padding: 32px 26px;
+        .site-nav {
+          min-height: 68px;
         }
 
-        h1 {
-          font-size: 2.75rem;
+        .nav-section-link {
+          display: none;
+        }
+
+        .hero,
+        .work-grid,
+        .about {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          gap: 36px;
+          padding-block: 62px 54px;
+        }
+
+        .current {
+          border-left: 0;
+          border-top: 1px solid var(--line);
+          padding: 18px 0 0;
+        }
+
+        .work-grid {
+          gap: 48px;
+          padding-bottom: 62px;
+        }
+
+        .work-visual,
+        .work-image {
+          height: 200px;
+        }
+
+        .about {
+          gap: 34px;
+          padding-block: 40px 52px;
+        }
+
+        .footer-inner {
+          align-items: flex-start;
+          flex-direction: column;
+          justify-content: center;
+          padding-block: 24px;
         }
       }
     </style>
   </head>
   <body>
-    <main aria-label="Personal homepage">
-      <section class="card">
-        <h1>Rongxuan Deng</h1>
-        <p class="contact">fdeng.andrew.cmu</p>
-        <div class="focus">Reinforcement Learning</div>
+    <header class="site-header">
+      <nav class="site-nav shell" aria-label="Primary navigation">
+        <a class="site-name" href="#top">Rongxuan Deng</a>
+        <div class="nav-links">
+          <a class="nav-section-link" href="#work">Work</a>
+          <a class="nav-section-link" href="#about">About</a>
+          <a href="https://github.com/Llark2008">GitHub ↗</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero shell" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Mathematics · Reinforcement Learning</p>
+          <h1 id="page-title">Rongxuan Deng</h1>
+          <p class="statement">Learning how agents make decisions.</p>
+          <p class="intro">
+            I’m a first-year Mathematics student at Carnegie Mellon University,
+            planning an additional major in Artificial Intelligence. I’m
+            interested in reinforcement learning, decision making, and embodied
+            intelligence.
+          </p>
+        </div>
+        <aside class="current" aria-label="Current focus">
+          <strong>Currently</strong>
+          Studying at CMU<br>
+          Building with SO-ARM101<br>
+          Exploring reliable RL
+        </aside>
+      </section>
+
+      <section id="work" class="shell" aria-labelledby="work-title">
+        <div class="section-heading">
+          <h2 id="work-title" class="section-label">Selected work</h2>
+          <p class="section-note">One paper · one real-system project</p>
+        </div>
+
+        <div class="work-grid">
+          <article class="work-item">
+            <div class="work-visual" aria-hidden="true">
+              <p>Split-Half Critic Updates Improve Short-Horizon SAC AUC</p>
+            </div>
+            <p class="work-kind">Workshop paper · 2026</p>
+            <h3>
+              Split-Half Critic Updates Improve Short-Horizon SAC AUC on Three
+              MuJoCo Tasks
+            </h3>
+            <p class="work-summary">
+              Accepted at the RLC 2026 Workshop on Reinforcement Learning Beyond
+              Rewards (RLBRew). Non-archival.
+            </p>
+            <div class="metadata">
+              <a href="https://openreview.net/forum?id=hyAXXpwWZD">OpenReview ↗</a>
+              <span>SAC</span>
+              <span>MuJoCo</span>
+            </div>
+          </article>
+
+          <article class="work-item">
+            <img
+              class="work-image"
+              src="assets/so-arm101-workspace.jpg"
+              alt="SO-ARM101 robot arms and camera arranged on a tabletop workspace"
+            >
+            <p class="work-kind">Independent project · 2026</p>
+            <h3>SO-ARM101 LeRobot Baselines</h3>
+            <p class="work-summary">
+              A reproduction-first real-robot imitation-learning pipeline spanning
+              calibration, teleoperation, dataset collection, ACT training,
+              deployment, and repeated evaluation. In the documented 20-trial
+              evaluations, the narrow 20-demonstration baseline achieved 7/20
+              successes, while the broader 50-demonstration setup achieved 20/20
+              under its varied-pose evaluation protocol.
+            </p>
+            <div class="metadata">
+              <a href="https://github.com/Llark2008/so-arm101-lerobot-baselines">GitHub ↗</a>
+              <span>ACT</span>
+              <span>Real robot</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="about" class="about shell" aria-labelledby="about-title">
+        <div>
+          <p class="section-label">About</p>
+          <h2 id="about-title" class="about-title">
+            Mathematics first, AI alongside it.
+          </h2>
+          <p class="about-copy">
+            At CMU, I’m building a mathematical foundation while exploring how
+            learning algorithms behave in both simulation and physical systems.
+          </p>
+        </div>
+        <div>
+          <p class="section-label">Interests</p>
+          <ul class="interest-list">
+            <li>Reinforcement learning</li>
+            <li>Decision making</li>
+            <li>Embodied intelligence</li>
+            <li>Robot learning</li>
+          </ul>
+        </div>
       </section>
     </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner shell">
+        <div class="footer-links">
+          <a href="mailto:fdeng@andrew.cmu.edu">fdeng@andrew.cmu.edu</a>
+          <a href="https://github.com/Llark2008">GitHub</a>
+          <a href="https://openreview.net/forum?id=hyAXXpwWZD">OpenReview</a>
+        </div>
+        <span>Rongxuan Deng · 2026</span>
+      </div>
+    </footer>
   </body>
 </html>
