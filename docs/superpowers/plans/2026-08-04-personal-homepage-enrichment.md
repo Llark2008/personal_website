@@ -340,7 +340,6 @@ Use the following file exactly as the implementation baseline:
       .site-name {
         font-family: Georgia, "Times New Roman", serif;
         font-size: 1.12rem;
-        text-decoration: none;
       }
 
       .nav-links,
@@ -369,6 +368,9 @@ Use the following file exactly as the implementation baseline:
       .work-kind {
         margin: 0;
         color: var(--accent);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
         font-size: 0.72rem;
         font-weight: 700;
         letter-spacing: 0.13em;
