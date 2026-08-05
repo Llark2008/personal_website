@@ -73,13 +73,13 @@ The hero establishes current identity without overstating credentials.
 
   > I’m a first-year Mathematics student at Carnegie Mellon University, planning an additional major in Artificial Intelligence. I’m interested in reinforcement learning, decision making, and embodied intelligence.
 
-An optional quiet aside may list:
+A required but visually quiet aside lists:
 
 - Studying at CMU
 - Building with SO-ARM101
 - Exploring reliable RL
 
-This aside must remain visually secondary to the main introduction.
+This aside must remain visually secondary to the main introduction. It is part of the approved desktop and mobile information hierarchy rather than an optional enhancement.
 
 ### Selected Work
 
@@ -101,7 +101,7 @@ The non-archival status must be visible rather than hidden in a tooltip or omitt
 - Label: `Independent project · 2026`
 - Title: `SO-ARM101 LeRobot Baselines`
 - Link: `https://github.com/Llark2008/so-arm101-lerobot-baselines`
-- Supporting image: an optimized local copy of the repository's workspace image, with useful alternative text
+- Supporting image: `assets/so-arm101-workspace.jpg`, an optimized local copy of `https://raw.githubusercontent.com/Llark2008/so-arm101-lerobot-baselines/main/media/workspace_setup.jpg`, with useful alternative text
 - Summary:
 
   > A real-robot imitation-learning pipeline spanning calibration, teleoperation, dataset collection, ACT training, deployment, and repeated evaluation.
@@ -111,6 +111,8 @@ The non-archival status must be visible rather than hidden in a tooltip or omitt
   > In the documented 20-trial evaluations, the narrow 20-demonstration baseline achieved 7/20 successes, while the broader 50-demonstration setup achieved 20/20 under its varied-pose evaluation protocol.
 
 The project must be described as a reproduction-first baseline study, not a new algorithm. The result must not be presented as a separate out-of-distribution benchmark or as proof of general robustness.
+
+Resize the local JPEG to no more than `1200px` on its longest edge and target a file size below `300KB`. Preserve the original aspect ratio and avoid visibly degrading the robot and workspace details.
 
 ### About and Interests
 
