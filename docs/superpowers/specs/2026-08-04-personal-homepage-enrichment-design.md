@@ -14,7 +14,7 @@ The site is a dependency-free GitHub Pages homepage implemented in one `index.ht
 - `fdeng.andrew.cmu`
 - `Reinforcement Learning`
 
-The existing page is responsive and readable, but its centered card provides no hierarchy beyond identity and gives visitors no evidence of research or engineering work.
+The existing page is responsive and readable, but its centered card provides no hierarchy beyond identity and gives visitors no evidence of research or engineering work. Its contact text is also incomplete and must be replaced with the confirmed public email address.
 
 ## Approved Direction
 
@@ -135,12 +135,12 @@ Do not add empty sections for awards, experience, coursework, publications beyon
 
 Include:
 
-- the existing public contact text `fdeng.andrew.cmu`
+- public email `fdeng@andrew.cmu.edu`, linked to `mailto:fdeng@andrew.cmu.edu`
 - GitHub profile link
 - OpenReview paper link
 - `Rongxuan Deng · 2026`
 
-Preserve `fdeng.andrew.cmu` as plain text because the current repository does not establish it as a complete email address. Do not invent a domain or `mailto:` link. A valid public email can replace it in a later content update.
+Replace the incomplete current text `fdeng.andrew.cmu` with the confirmed public email. Display the full address so it remains understandable when copied or printed.
 
 ## Visual System
 
@@ -217,7 +217,8 @@ Mobile target: `390 × 844` and widths down to `320px`.
 
 Extend `scripts/verify-homepage.mjs` using Node.js built-ins to check:
 
-- the name and current contact text are present
+- the name and exact public email `fdeng@andrew.cmu.edu` are present
+- the email links to `mailto:fdeng@andrew.cmu.edu`
 - exactly one `h1` exists
 - `header`, `nav`, `main`, two `article` elements, and `footer` exist
 - `Work` and `About` section IDs exist
