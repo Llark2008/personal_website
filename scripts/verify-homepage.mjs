@@ -1,7 +1,8 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
 import { resolve } from "node:path";
 
 const homepagePath = resolve("index.html");
+const projectImagePath = resolve("assets/so-arm101-workspace.jpg");
 
 let html;
 
@@ -12,22 +13,94 @@ try {
   process.exit(1);
 }
 
+const countMatches = (pattern) => html.match(pattern)?.length ?? 0;
+
 const checks = [
   {
     name: "name is present",
     test: () => html.includes("Rongxuan Deng"),
   },
   {
-    name: "contact is present",
-    test: () => html.includes("fdeng.andrew.cmu"),
+    name: "complete public email is present",
+    test: () => html.includes("fdeng@andrew.cmu.edu"),
   },
   {
-    name: "research area is present",
-    test: () => html.includes("Reinforcement Learning"),
+    name: "public email has a mailto link",
+    test: () => html.includes('href="mailto:fdeng@andrew.cmu.edu"'),
+  },
+  {
+    name: "incomplete legacy contact is absent",
+    test: () => !html.includes("fdeng.andrew.cmu"),
+  },
+  {
+    name: "exactly one h1 exists",
+    test: () => countMatches(/<h1\b/gi) === 1,
+  },
+  {
+    name: "semantic page regions exist",
+    test: () =>
+      /<header\b/i.test(html) &&
+      /<nav\b/i.test(html) &&
+      /<main\b/i.test(html) &&
+      /<footer\b/i.test(html),
+  },
+  {
+    name: "two selected work articles exist",
+    test: () => countMatches(/<article\b/gi) === 2,
+  },
+  {
+    name: "work and about anchors exist",
+    test: () => html.includes('id="work"') && html.includes('id="about"'),
+  },
+  {
+    name: "GitHub profile link exists",
+    test: () => html.includes('href="https://github.com/Llark2008"'),
+  },
+  {
+    name: "robot project link exists",
+    test: () =>
+      html.includes(
+        'href="https://github.com/Llark2008/so-arm101-lerobot-baselines"',
+      ),
+  },
+  {
+    name: "OpenReview link exists",
+    test: () =>
+      html.includes(
+        'href="https://openreview.net/forum?id=hyAXXpwWZD"',
+      ),
+  },
+  {
+    name: "paper is visibly non-archival",
+    test: () => /non-archival/i.test(html),
+  },
+  {
+    name: "robot evaluation counts are present",
+    test: () => html.includes("7/20") && html.includes("20/20"),
+  },
+  {
+    name: "robot image has the expected source and alt text",
+    test: () =>
+      /<img\s+[^>]*src="assets\/so-arm101-workspace\.jpg"[^>]*alt="[^"]+"/i.test(
+        html,
+      ),
+  },
+  {
+    name: "local robot image exists",
+    test: () => existsSync(projectImagePath),
+  },
+  {
+    name: "local robot image is below 300KB",
+    test: () =>
+      existsSync(projectImagePath) && statSync(projectImagePath).size < 300_000,
   },
   {
     name: "title metadata exists",
     test: () => /<title>[^<]+<\/title>/i.test(html),
+  },
+  {
+    name: "description metadata exists",
+    test: () => /<meta\s+name="description"\s+content="[^"]+"/i.test(html),
   },
   {
     name: "viewport metadata exists",
@@ -48,4 +121,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log("Homepage verification passed.");
+console.log(`Homepage verification passed (${checks.length} checks).`);
