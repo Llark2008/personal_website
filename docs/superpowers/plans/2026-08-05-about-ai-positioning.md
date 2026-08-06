@@ -23,7 +23,7 @@
 
 **Files:**
 - Modify: `scripts/verify-homepage.mjs`
-- Modify: `index.html:439-448`
+- Modify: `index.html` About title styles and `index.html:439-448`
 
 **Interfaces:**
 - Consumes: the static `index.html` file read by `scripts/verify-homepage.mjs`
@@ -69,7 +69,13 @@ Expected: FAIL only for the three new About checks because `index.html` still co
 
 - [ ] **Step 3: Apply the minimal About copy change**
 
-Replace the existing About heading and paragraph in `index.html` with:
+Add balanced wrapping to the existing `.about-title` rule so the approved longer heading does not leave an isolated final word at desktop widths:
+
+```css
+        text-wrap: balance;
+```
+
+Then replace the existing About heading and paragraph in `index.html` with:
 
 ```html
           <h2 id="about-title" class="about-title">
