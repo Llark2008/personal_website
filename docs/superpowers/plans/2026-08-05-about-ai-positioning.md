@@ -27,28 +27,37 @@
 
 **Interfaces:**
 - Consumes: the static `index.html` file read by `scripts/verify-homepage.mjs`
-- Produces: three new homepage contract checks and the approved About heading/body copy
+- Produces: whitespace-normalized visible-text checks and the approved About heading/body copy
 
 - [ ] **Step 1: Write the failing content checks**
 
-Insert these checks after `work and about anchors exist` in `scripts/verify-homepage.mjs`:
+Add this helper after `countMatches` so HTML formatting whitespace does not change the user-visible copy contract:
+
+```js
+const normalizedText = html.replace(/\s+/g, " ").trim();
+```
+
+Then insert these checks after `work and about anchors exist` in `scripts/verify-homepage.mjs`:
 
 ```js
   {
     name: "About heading frames mathematics as a foundation for intelligent systems",
     test: () =>
-      html.includes("Mathematical foundations for intelligent systems."),
+      normalizedText.includes(
+        "Mathematical foundations for intelligent systems.",
+      ),
   },
   {
     name: "About copy frames mathematics as preparation for AI work",
     test: () =>
-      html.includes(
+      normalizedText.includes(
         "At CMU, I’m building a strong mathematical foundation for work in artificial intelligence, with a focus on how learning agents make decisions in simulated and physical systems.",
       ),
   },
   {
     name: "superseded About priority hierarchy is absent",
-    test: () => !html.includes("Mathematics first, AI alongside it."),
+    test: () =>
+      !normalizedText.includes("Mathematics first, AI alongside it."),
   },
 ```
 
