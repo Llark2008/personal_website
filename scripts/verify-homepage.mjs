@@ -14,6 +14,7 @@ try {
 }
 
 const countMatches = (pattern) => html.match(pattern)?.length ?? 0;
+const normalizedText = html.replace(/\s+/g, " ").trim();
 
 const checks = [
   {
@@ -51,6 +52,25 @@ const checks = [
   {
     name: "work and about anchors exist",
     test: () => html.includes('id="work"') && html.includes('id="about"'),
+  },
+  {
+    name: "About heading frames mathematics as a foundation for intelligent systems",
+    test: () =>
+      normalizedText.includes(
+        "Mathematical foundations for intelligent systems.",
+      ),
+  },
+  {
+    name: "About copy frames mathematics as preparation for AI work",
+    test: () =>
+      normalizedText.includes(
+        "At CMU, I’m building a strong mathematical foundation for work in artificial intelligence, with a focus on how learning agents make decisions in simulated and physical systems.",
+      ),
+  },
+  {
+    name: "superseded About priority hierarchy is absent",
+    test: () =>
+      !normalizedText.includes("Mathematics first, AI alongside it."),
   },
   {
     name: "GitHub profile link exists",

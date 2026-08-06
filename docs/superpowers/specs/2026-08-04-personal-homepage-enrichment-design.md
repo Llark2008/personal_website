@@ -118,9 +118,15 @@ Resize the local JPEG to no more than `1200px` on its longest edge and target a 
 
 Use a compact two-column section on desktop and one column on mobile.
 
+About heading:
+
+> Mathematical foundations for intelligent systems.
+
 About copy:
 
-> At CMU, I’m building a mathematical foundation while exploring how learning algorithms behave in both simulation and physical systems.
+> At CMU, I’m building a strong mathematical foundation for work in artificial intelligence, with a focus on how learning agents make decisions in simulated and physical systems.
+
+This wording makes artificial intelligence the intended direction and mathematics the foundation for pursuing it. It must not imply that AI is merely secondary, and it must not overstate the planned additional major as already declared. The original `Mathematics first, AI alongside it.` heading is rejected because `first` and `alongside` create an unintended priority hierarchy. A more symmetrical `Mathematics and AI` heading is also rejected because it can imply that both majors are already formally established.
 
 Interest list:
 
@@ -222,6 +228,9 @@ Extend `scripts/verify-homepage.mjs` using Node.js built-ins to check:
 - exactly one `h1` exists
 - `header`, `nav`, `main`, two `article` elements, and `footer` exist
 - `Work` and `About` section IDs exist
+- the About heading is exactly `Mathematical foundations for intelligent systems.`
+- the About copy explicitly frames the mathematical foundation as preparation for work in artificial intelligence
+- the superseded `Mathematics first, AI alongside it.` heading is absent
 - the exact GitHub repository and OpenReview URLs exist
 - the workshop paper is visibly labeled `non-archival`
 - the project result includes both `7/20` and `20/20`
