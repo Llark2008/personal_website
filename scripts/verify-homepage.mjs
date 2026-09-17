@@ -55,11 +55,22 @@ const checks = [
     test: () => countMatches(/<article\b/gi) === 3,
   },
   {
-    name: "new paper is the first selected work item",
-    test: () =>
-      html.indexOf('aria-labelledby="interaction-cache-title"') > -1 &&
-      html.indexOf('aria-labelledby="interaction-cache-title"') <
-        html.indexOf("Split-Half Critic Updates Improve Short-Horizon SAC AUC"),
+    name: "selected work items appear in the intended order",
+    test: () => {
+      const newPaperIndex = html.indexOf(
+        'aria-labelledby="interaction-cache-title"',
+      );
+      const sacPaperIndex = html.indexOf(
+        "Split-Half Critic Updates Improve Short-Horizon SAC AUC",
+      );
+      const robotProjectIndex = html.indexOf("SO-ARM101 LeRobot Baselines");
+
+      return (
+        newPaperIndex > -1 &&
+        newPaperIndex < sacPaperIndex &&
+        sacPaperIndex < robotProjectIndex
+      );
+    },
   },
   {
     name: "new paper title and acceptance venue are present",
@@ -79,8 +90,23 @@ const checks = [
       normalizedNewPaperArticle.includes("30.76–49.57%"),
   },
   {
-    name: "new paper card has no placeholder external link",
-    test: () => newPaperArticle.length > 0 && !/<a\b/i.test(newPaperArticle),
+    name: "new paper kind and tags are present",
+    test: () =>
+      normalizedNewPaperArticle.includes(
+        "Workshop extended abstract · 2026",
+      ) &&
+      normalizedNewPaperArticle.includes("Multi-robot systems") &&
+      normalizedNewPaperArticle.includes("Planning") &&
+      normalizedNewPaperArticle.includes("Accepted"),
+  },
+  {
+    name: "new paper card has no external-link placeholder",
+    test: () =>
+      newPaperArticle.length > 0 &&
+      !/<(?:a|button)\b/i.test(newPaperArticle) &&
+      !/\b(?:coming soon|forthcoming|tbd|placeholder)\b/i.test(
+        normalizedNewPaperArticle,
+      ),
   },
   {
     name: "selected work summary reflects two papers and one project",
