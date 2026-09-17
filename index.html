@@ -192,6 +192,19 @@
         padding-top: 18px;
       }
 
+      .work-item--featured {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+        gap: 32px;
+      }
+
+      .work-item--featured .work-visual {
+        min-height: 240px;
+        height: 100%;
+        margin-bottom: 0;
+      }
+
       .work-visual,
       .work-image {
         width: 100%;
@@ -317,6 +330,12 @@
           grid-template-columns: 1fr;
         }
 
+        .work-item--featured {
+          grid-column: auto;
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
         .hero {
           gap: 36px;
           padding-block: 62px 54px;
@@ -336,6 +355,12 @@
         .work-visual,
         .work-image {
           height: 200px;
+        }
+
+        .work-item--featured .work-visual {
+          min-height: 0;
+          height: 200px;
+          margin-bottom: 22px;
         }
 
         .about {
@@ -388,10 +413,38 @@
       <section id="work" class="shell" aria-labelledby="work-title">
         <div class="section-heading">
           <h2 id="work-title" class="section-label">Selected work</h2>
-          <p class="section-note">One paper · one real-system project</p>
+          <p class="section-note">Two papers · one real-system project</p>
         </div>
 
         <div class="work-grid">
+          <article
+            class="work-item work-item--featured"
+            aria-labelledby="interaction-cache-title"
+          >
+            <div class="work-visual" aria-hidden="true">
+              <p>Exact Interaction Caching for Multi-Robot Assignment</p>
+            </div>
+            <div>
+              <p class="work-kind">Workshop extended abstract · 2026</p>
+              <h3 id="interaction-cache-title">
+                Exact Interaction Caching for Multi-Robot Assignment Refinement
+              </h3>
+              <p class="work-summary">
+                Accepted at the IROS 2026 Workshop on Multi-Agent Systems:
+                Beyond the Warehouse (MAS-BW26) for a poster and lightning talk.
+                The method exactly reproduced full interaction-aware assignment
+                decisions across 1,920 prespecified VMAS worlds while reducing
+                isolated single-thread assignment-selection latency by
+                30.76–49.57%.
+              </p>
+              <div class="metadata">
+                <span>Multi-robot systems</span>
+                <span>Planning</span>
+                <span>Accepted</span>
+              </div>
+            </div>
+          </article>
+
           <article class="work-item">
             <div class="work-visual" aria-hidden="true">
               <p>Split-Half Critic Updates Improve Short-Horizon SAC AUC</p>
