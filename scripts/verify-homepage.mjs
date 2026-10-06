@@ -15,6 +15,11 @@ try {
 
 const countMatches = (pattern) => html.match(pattern)?.length ?? 0;
 const normalizedText = html.replace(/\s+/g, " ").trim();
+const newPaperArticle =
+  html.match(
+    /<article\b[^>]*aria-labelledby="interaction-cache-title"[^>]*>[\s\S]*?<\/article>/i,
+  )?.[0] ?? "";
+const normalizedNewPaperArticle = newPaperArticle.replace(/\s+/g, " ").trim();
 
 const checks = [
   {
@@ -46,8 +51,66 @@ const checks = [
       /<footer\b/i.test(html),
   },
   {
-    name: "two selected work articles exist",
-    test: () => countMatches(/<article\b/gi) === 2,
+    name: "three selected work articles exist",
+    test: () => countMatches(/<article\b/gi) === 3,
+  },
+  {
+    name: "selected work items appear in the intended order",
+    test: () => {
+      const newPaperIndex = html.indexOf(
+        'aria-labelledby="interaction-cache-title"',
+      );
+      const sacPaperIndex = html.indexOf(
+        "Split-Half Critic Updates Improve Short-Horizon SAC AUC",
+      );
+      const robotProjectIndex = html.indexOf("SO-ARM101 LeRobot Baselines");
+
+      return (
+        newPaperIndex > -1 &&
+        newPaperIndex < sacPaperIndex &&
+        sacPaperIndex < robotProjectIndex
+      );
+    },
+  },
+  {
+    name: "new paper title and acceptance venue are present",
+    test: () =>
+      normalizedNewPaperArticle.includes(
+        "Exact Interaction Caching for Multi-Robot Assignment Refinement",
+      ) &&
+      normalizedNewPaperArticle.includes(
+        "IROS 2026 Workshop on Multi-Agent Systems: Beyond the Warehouse (MAS-BW26)",
+      ),
+  },
+  {
+    name: "new paper presentation format and results are present",
+    test: () =>
+      normalizedNewPaperArticle.includes("poster and lightning talk") &&
+      normalizedNewPaperArticle.includes("1,920 prespecified VMAS worlds") &&
+      normalizedNewPaperArticle.includes("30.76–49.57%"),
+  },
+  {
+    name: "new paper kind and tags are present",
+    test: () =>
+      normalizedNewPaperArticle.includes(
+        "Workshop extended abstract · 2026",
+      ) &&
+      normalizedNewPaperArticle.includes("Multi-robot systems") &&
+      normalizedNewPaperArticle.includes("Planning") &&
+      normalizedNewPaperArticle.includes("Accepted"),
+  },
+  {
+    name: "new paper card has no external-link placeholder",
+    test: () =>
+      newPaperArticle.length > 0 &&
+      !/<(?:a|button)\b/i.test(newPaperArticle) &&
+      !/\b(?:coming soon|forthcoming|tbd|placeholder)\b/i.test(
+        normalizedNewPaperArticle,
+      ),
+  },
+  {
+    name: "selected work summary reflects two papers and one project",
+    test: () => normalizedText.includes("Two papers · one real-system project"),
   },
   {
     name: "work and about anchors exist",
